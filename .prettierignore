@@ -1,0 +1,8 @@
+CHANGELOG.md
+pnpm-lock.yaml
+.changeset/*.md
+.github/**/*.md
+
+out
+
+build/
