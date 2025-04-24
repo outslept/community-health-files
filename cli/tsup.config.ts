@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsup'
 
 export default defineConfig({
   entry: ['index.tsx'],
@@ -9,6 +9,6 @@ export default defineConfig({
   target: 'node16',
   shims: true,
   esbuildOptions(options) {
-    options.jsx = 'automatic';
+    options.jsx = 'automatic'
   },
-});
+})

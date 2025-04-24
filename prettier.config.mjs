@@ -9,12 +9,12 @@ const prettierConfig = {
    *
    * @see https://github.com/prettier/prettier/blob/main/docs/configuration.md#editorconfig
    */
-  endOfLine: "lf",
+  endOfLine: 'lf',
   tabWidth: 2,
   printWidth: 80,
   useTabs: false,
 
   singleQuote: true,
-};
+}
 
-export default prettierConfig;
+export default prettierConfig
