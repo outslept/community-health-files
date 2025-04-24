@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "@community-health/root",
   "packageManager": "pnpm@10.6.5",
   "dependencies": {
     "typescript": "^5"
