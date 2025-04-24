@@ -1,0 +1,105 @@
+---
+title: "License Generator"
+description: "Add the right license to your project with a single command"
+---
+
+The License Generator is a powerful tool that helps you add appropriate license files to your projects.
+
+## Workflow
+
+The License Generator follows a simple workflow:
+
+1. **Check for existing license** - The tool first checks if your project already has a license file or license field in package.json
+2. **Select a license** - If no license is found, you can choose from a list of popular licenses or search for a specific one
+3. **Generate license file** - The tool creates a LICENSE file in your project with the appropriate text
+4. **Update package.json** - If your project has a package.json file, the license field is updated to match the chosen license
+
+## How It Works
+
+### License Source
+
+The License Generator uses the [SPDX License List](https://spdx.org/licenses/) as its source of truth for license information. This ensures that:
+
+- All licenses are standardized and recognized by the open source community
+- License texts are accurate and up-to-date
+- License identifiers follow industry standards
+
+The license text is obtained through one of two methods:
+
+1. **Direct from SPDX** - The tool includes the `spdx-license-list` package which contains the full text of all SPDX-approved licenses
+2. **GitHub API fallback** - For any licenses not available in the package, the tool falls back to the GitHub Licenses API
+
+### License Text Processing
+
+When a license is selected, the tool:
+
+1. Retrieves the full license text with placeholders (e.g., `[year]`, `[fullname]`)
+2. Adds the license text to a LICENSE file in the root of your project
+3. Adds a note recommending that you customize the placeholders with your information
+
+## Command Line Usage
+
+### Basic Usage
+
+To add a license interactively:
+
+```bash
+npx community-health-files license add
+```
+
+This launches an interactive CLI that:
+- Checks if a license already exists
+- Presents a list of popular licenses to choose from
+- Allows searching for specific licenses
+- Generates the license file
+
+### Adding a Specific License
+
+If you already know which license you want to add:
+
+```bash
+npx community-health-files license add MIT
+```
+
+This will directly add the MIT license to your project.
+
+### Options
+
+TODO
+
+## License Selection Guide
+
+When choosing a license, consider:
+
+1. **Permissive vs. Copyleft**
+   - Permissive licenses (MIT, Apache, BSD) have minimal restrictions
+   - Copyleft licenses (GPL, AGPL) require derivative works to use the same license
+
+2. **Patent Grants**
+   - Some licenses (Apache 2.0) explicitly include patent grants
+   - Others (MIT, BSD) don't address patents directly
+
+3. **Commercial Use**
+   - Most open source licenses allow commercial use
+   - Some have specific requirements for commercial users
+
+## Popular Licenses
+
+| License | Type | Description |
+|---------|------|-------------|
+| MIT | Permissive | Simple and permissive, requires only attribution |
+| Apache 2.0 | Permissive | Includes patent grants and contributor terms |
+| GPL 3.0 | Copyleft | Requires derivative works to be open source |
+| BSD 3-Clause | Permissive | Similar to MIT but with an additional clause |
+| MPL 2.0 | Weak Copyleft | File-level copyleft, allows linking with proprietary code |
+
+## Implementation Details
+
+The tool follows these steps internally:
+
+1. Check for existing license files in the project root
+2. Check for license field in package.json if present
+3. If no license is found, present the selection interface
+4. When a license is selected, fetch the license text
+5. Write the license text to a LICENSE file in the project root
+6. Update package.json license field if applicable
